@@ -22,14 +22,7 @@ export default function countInversions(integerArray) {
     )
   }
 
-  let inversions = 0
-
-  for (let i = 0; i < integerArray.length -1; i++) {
-    for (let j = i + 1; j < integerArray.length; j++) {
-      if (integerArray[i] > integerArray[j]) {
-        inversions++
-      }
-    }
-  }
-  return inversions
+  return integerArray.reduce((acc, curr, i) => {
+    return acc + integerArray.slice(i + 1).filter((num) => num < curr).length
+  })
 }
